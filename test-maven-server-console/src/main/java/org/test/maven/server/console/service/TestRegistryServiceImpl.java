@@ -1,9 +1,10 @@
 package org.test.maven.server.console.service;
 
-import org.springframework.stereotype.Service;
 import org.test.maven.server.api.service.TestRegistryService;
 
-@Service("testService")
+import com.alibaba.dubbo.config.annotation.Service;
+
+@Service(version="1.0.0")
 public class TestRegistryServiceImpl implements TestRegistryService{
 
 	@Override
