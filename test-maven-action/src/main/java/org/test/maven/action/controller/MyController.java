@@ -19,7 +19,7 @@ public class MyController {
 	
 	@RequestMapping(value="/home", method=RequestMethod.GET)
 	public ResponseEntity<Map<String, String>> home() {
-		System.out.println(testService.hello("wrt"));
+//		System.out.println(testService.hello("wrt"));
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("say", testService.hello("wrt"));
 		return ResponseEntity.ok(map);

@@ -54,6 +54,21 @@
 			<version>1.16.6</version>
 			<optional>true</optional>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.esotericsoftware.kryo/kryo -->
+		<dependency>
+			<groupId>com.esotericsoftware.kryo</groupId>
+			<artifactId>kryo</artifactId>
+			<version>2.24.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/de.javakaffee/kryo-serializers -->
+		<dependency>
+			<groupId>de.javakaffee</groupId>
+			<artifactId>kryo-serializers</artifactId>
+			<version>0.41</version>
+		</dependency>
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -65,5 +80,6 @@
 		<module>test-maven-server-api</module>
 		<module>test-maven-server-console</module>
 		<module>test-maven-action</module>
+		<module>test-maven-server-other</module>
 	</modules>
 </project>

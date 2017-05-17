@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://code.alibabatech.com/schema/dubbo
     http://code.alibabatech.com/schema/dubbo/dubbo.xsd ">
-    <!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
-    <dubbo:application name="${dubbo.application.name}" />
-    <!-- 使用zookeeper作为注册中心 -->
-    <dubbo:registry  protocol="zookeeper" address="${dubbo.registry.address}" file="${dubbo.registry.file}" />
-   	<!-- 扫描注解包路径，多个包用逗号分隔，不填pacakge表示扫描当前ApplicationContext中所有的类 -->
+	<!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+	<dubbo:application name="${dubbo.application.name}"
+		logger="slf4j" />
+	<!-- 使用zookeeper作为注册中心 -->
+	<!-- 如果你的Spring容器是懒加载的，或者通过API编程延迟引用服务，请关闭check，否则服务临时不可用时，会抛出异常，拿到null引用，如果check=false，总是会返回引用，当服务恢复时，能自动连上。 -->
+	<dubbo:registry protocol="zookeeper" address="${dubbo.registry.address}"
+		file="${dubbo.registry.file}" check="false" />
+
+
+	<dubbo:protocol accesslog="true" name="dubbo" port="${dubbo.protocol.port}" />
+
+	<!-- 扫描注解包路径，多个包用逗号分隔，不填pacakge表示扫描当前ApplicationContext中所有的类 -->
 	<dubbo:annotation package="org.test.maven.server.console.service" />
+
+	<dubbo:provider timeout="${dubbo.provider.timeout}"
+		retries="${dubbo.provider.retries}" />
+
+	<dubbo:consumer timeout="${dubbo.consumer.timeout}"
+		retries="${dubbo.consumer.retries}" check="false" />
 </beans>
