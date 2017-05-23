@@ -14,7 +14,7 @@
 		file="${dubbo.registry.file}" check="false" />
 
 
-	<dubbo:protocol accesslog="true" name="dubbo"  port="${dubbo.protocol.port}" />
+	<dubbo:protocol accesslog="true" name="dubbo"  port="${dubbo.protocol.port}" serialization="kryo"/>
 
 	<!-- 扫描注解包路径，多个包用逗号分隔，不填pacakge表示扫描当前ApplicationContext中所有的类 -->
 	<dubbo:annotation package="org.test.maven.server.other.impl" />

@@ -10,13 +10,12 @@
 	<dubbo:application name="${dubbo.application.name}"
 		logger="slf4j" />
 
-	<dubbo:protocol accesslog="true" name="dubbo" port="${dubbo.protocol.port}"  />
+	<dubbo:protocol accesslog="true" name="dubbo" port="${dubbo.protocol.port}" serialization="kryo" />
 	<!-- zookeeper作为注册中心 -->
 	<dubbo:registry protocol="zookeeper" address="${dubbo.registry.address}"
 		file="${dubbo.registry.file}" />
 	<!-- 扫描注解包路径，多个包用逗号分隔，不填pacakge表示扫描当前ApplicationContext中所有的类 -->
 	<dubbo:annotation package="org.test.maven.action.controller" />
 	<!-- 如果你的Spring容器是懒加载的，或者通过API编程延迟引用服务，请关闭check，否则服务临时不可用时，会抛出异常，拿到null引用，如果check=false，总是会返回引用，当服务恢复时，能自动连上。 -->
-	<dubbo:consumer timeout="${dubbo.consumer.timeout}"
-		retries="${dubbo.consumer.retries}" check="false" />
+	<dubbo:consumer  check="false" />
 </beans>
